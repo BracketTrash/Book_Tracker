@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Book_Tracker</string>
+    <string name="button_addBook">Add Book</string>
+    <string name="hint_bookTitle">Book Title</string>
+    <string name="hint_bookAuthor">Book Author</string>
+    <string name="hint_bookPage">Book Page</string>
+    <string name="menu_addBook">Add</string>
+
+</resources>
