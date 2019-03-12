@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
+import org.jetbrains.anko.startActivityForResult
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_book_list.*
 import kotlinx.android.synthetic.main.card_placement.view.*
@@ -24,10 +25,9 @@ import models.Book_TrackerModel
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = BookAdapter(app.books)
+        //recyclerView.adapter = BookAdapter(app.books)
 
-        toolbarMain.title = title
-        setSupportActionBar(toolbarMain)
+
     }
      override fun onCreateOptionsMenu(menu: Menu?): Boolean {
          menuInflater.inflate(R.menu.menu_main, menu)
@@ -38,7 +38,7 @@ import models.Book_TrackerModel
 class BookAdapter constructor(private var books: List<Book_TrackerModel>) : RecyclerView.Adapter<BookAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        return MainHolder(LayoutInflater.from(parent?.context).inflate(R.layout.card_placement, parent, false))
+        return MainHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_placement, parent, false))
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {

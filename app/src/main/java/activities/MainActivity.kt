@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.conor.book_tracker.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
@@ -13,6 +14,8 @@ import models.Book_TrackerModel
 class MainActivity : AppCompatActivity(), AnkoLogger {
 
     lateinit var app : MainApp
+    var book = Book_TrackerModel()
+    val books = ArrayList<Book_TrackerModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +27,9 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
             val bookAuthor = bookAuthor.text.toString()
             val bookPage = bookPage.text.toString()
             if (bookTitle.isNotEmpty() && bookAuthor.isNotEmpty() && bookPage.isNotEmpty() ) {
-              //  app.booklist.add(book.copy())
+               books.add(book.copy())
                 info("add Button Pressed: $bookTitle; $bookAuthor; $bookPage")
-               // app.booklist.forEach{info("add Button Pressed: ${it}")}
+               books.forEach{info("add Button Pressed: ${it}")}
             }
             else {
                 toast ("Please Enter a title")
