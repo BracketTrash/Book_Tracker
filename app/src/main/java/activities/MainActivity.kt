@@ -14,9 +14,8 @@ import models.Book_TrackerModel
 class MainActivity : AppCompatActivity(), AnkoLogger {
 
     lateinit var app : MainApp
-    var book = Book_TrackerModel()
-    val books = ArrayList<Book_TrackerModel>()
 
+    var book = Book_TrackerModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,9 +26,11 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
             val bookAuthor = bookAuthor.text.toString()
             val bookPage = bookPage.text.toString()
             if (bookTitle.isNotEmpty() && bookAuthor.isNotEmpty() && bookPage.isNotEmpty() ) {
-               books.add(book.copy())
+               app!!.books.add(book.copy())
                 info("add Button Pressed: $bookTitle; $bookAuthor; $bookPage")
-               books.forEach{info("add Button Pressed: ${it}")}
+               app!!.books.forEach{info("add Button Pressed: ${it}")
+                   setResult(AppCompatActivity.RESULT_OK)
+                   finish()}
             }
             else {
                 toast ("Please Enter a title")

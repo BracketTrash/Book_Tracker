@@ -4,15 +4,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
 import org.jetbrains.anko.startActivityForResult
-import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_book_list.*
 import kotlinx.android.synthetic.main.card_placement.view.*
 import com.conor.book_tracker.R
 import MainApp.MainApp
-import android.view.Menu
+import android.view.*
+import org.jetbrains.anko.startActivityForResult
 import models.Book_TrackerModel
 
  class BookListActivity : AppCompatActivity(){
@@ -25,13 +23,20 @@ import models.Book_TrackerModel
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        //recyclerView.adapter = BookAdapter(app.books)
+        recyclerView.adapter = BookAdapter(app.books)
 
 
     }
      override fun onCreateOptionsMenu(menu: Menu?): Boolean {
          menuInflater.inflate(R.menu.menu_main, menu)
          return super.onCreateOptionsMenu(menu)
+     }
+
+     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+         when (item?.itemId) {
+             R.id.item_add -> startActivityForResult<MainActivity>(0)
+         }
+         return super.onOptionsItemSelected(item)
      }
 }
 
