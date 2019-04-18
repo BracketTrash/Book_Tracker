@@ -3,17 +3,18 @@ package activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import org.jetbrains.anko.startActivityForResult
 import kotlinx.android.synthetic.main.activity_book_list.*
-import kotlinx.android.synthetic.main.card_placement.view.*
 import com.conor.book_tracker.R
 import MainApp.MainApp
+import android.content.Intent
 import android.view.*
-import org.jetbrains.anko.startActivityForResult
 import models.Book_TrackerModel
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivityForResult
 
- class BookListActivity : AppCompatActivity(){
+class BookListActivity : AppCompatActivity(), BookListener{
+
     lateinit var app:MainApp
 
     override fun onCreate(savedInstanceState:Bundle?){
@@ -21,11 +22,13 @@ import models.Book_TrackerModel
         setContentView(R.layout.activity_book_list)
         app=application as MainApp
 
+
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = BookAdapter(app.books)
+        loadBooks()
 
-
+        toolbarMain.title=title
+        setSupportActionBar(toolbarMain)
     }
      override fun onCreateOptionsMenu(menu: Menu?): Boolean {
          menuInflater.inflate(R.menu.menu_main, menu)
@@ -38,27 +41,23 @@ import models.Book_TrackerModel
          }
          return super.onOptionsItemSelected(item)
      }
-}
 
-class BookAdapter constructor(private var books: List<Book_TrackerModel>) : RecyclerView.Adapter<BookAdapter.MainHolder>() {
+     override fun onBookClick(book: Book_TrackerModel) {
+         startActivityForResult(intentFor<MainActivity>().putExtra("book_edit", book), 0)
+     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        return MainHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_placement, parent, false))
-    }
+     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){
+         //recyclerView is a widget in Book_List_Activity
+         loadBooks()
+         super.onActivityResult(requestCode, resultCode, data)
+     }
 
-    override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val book = books[holder.adapterPosition]
-        holder.bind(book)
-    }
+     private fun loadBooks() {
+         showBooks(app.books.findAll())
+     }
 
-    override fun getItemCount(): Int = books.size
-
-    class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        fun bind(book: Book_TrackerModel) {
-            itemView.bookTitle.text = book.title
-            itemView.bookAuthor.text = book.author
-            itemView.bookPage.text = book.page
-        }
-    }
+     fun showBooks (books: List<Book_TrackerModel>) {
+         recyclerView.adapter = BookAdapter(books, this)
+         recyclerView.adapter?.notifyDataSetChanged()
+     }
 }
