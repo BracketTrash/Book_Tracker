@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "318632817169",
+    "firebase_url": "https://book-tracker-22436.firebaseio.com",
+    "project_id": "book-tracker-22436",
+    "storage_bucket": "book-tracker-22436.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318632817169:android:8268bd4ca8e7781e",
+        "android_client_info": {
+          "package_name": "com.conor.book_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318632817169-ogiuqh5eku75vsse14aatv102lmikoui.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.conor.book_tracker",
+            "certificate_hash": "59ed663851d611310636dcd1a1c03cd7d85ae5eb"
+          }
+        },
+        {
+          "client_id": "318632817169-eaf1duc59l1ea2kvstfqpp2mdoividmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPxvlqgPNAnAwcKcbf90mWtcMQxQZB-uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318632817169-eaf1duc59l1ea2kvstfqpp2mdoividmq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

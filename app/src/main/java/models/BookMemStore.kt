@@ -11,6 +11,12 @@ internal fun getId(): Long {
 
 class BookMemStore : BookStore , AnkoLogger{
 
+    val books = ArrayList<Book_TrackerModel>()
+
+    override fun findAll(): List<Book_TrackerModel> {
+        return books
+    }
+
     override fun create(book: Book_TrackerModel) {
         book.id=getId()
         books.add(book)
@@ -31,12 +37,4 @@ class BookMemStore : BookStore , AnkoLogger{
         books.forEach{ info("${it}")
         }
     }
-
-    val books = ArrayList<Book_TrackerModel>()
-
-    override fun findAll(): List<Book_TrackerModel> {
-        return books
-    }
-
-
 }
