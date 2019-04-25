@@ -23,7 +23,7 @@ class BookMemStore : BookStore , AnkoLogger{
         logAll()
     }
 
-     fun update(book: Book_TrackerModel){
+     override fun update(book: Book_TrackerModel){
         var foundBook: Book_TrackerModel?=books.find {p->p.id==book.id}
         if(foundBook != null) {
             foundBook.title = book.title

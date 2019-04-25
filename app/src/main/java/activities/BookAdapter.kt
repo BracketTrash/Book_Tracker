@@ -10,7 +10,7 @@ import models.Book_TrackerModel
 
     interface BookListener {
     fun onBookClick(book: Book_TrackerModel)
-}
+    }
     class BookAdapter constructor(private var books: List<Book_TrackerModel>,
                                   private val listener: BookListener) : RecyclerView.Adapter<BookAdapter.MainHolder>() {
 

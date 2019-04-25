@@ -14,12 +14,12 @@ import org.jetbrains.anko.toast
 import models.Book_TrackerModel
 import org.jetbrains.anko.startActivityForResult
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class MainActivity : AppCompatActivity(), AnkoLogger {
-    val IMAGE_REQUEST = 1
+
     lateinit var app : MainApp
     var edit = false
     var book = Book_TrackerModel()
+    val IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
              book.title = bookTitle.text.toString()
              book.author = bookAuthor.text.toString()
              book.page = bookPage.text.toString()
-            if (bookTitle.isNotEmpty() && bookAuthor.isNotEmpty() && bookPage.isNotEmpty()) {
+            if (book.title.isNotEmpty() && book.author.isNotEmpty() && book.page.isNotEmpty()) {
                 if(edit){
                     app.books.update(book.copy())
                 }
@@ -53,12 +53,10 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
             }
+            else {
+                toast(R.string.enter_book_title)
             }
-
-        fun onCreateOptionsMenu(menu: Menu?): Boolean {
-            menuInflater.inflate(com.conor.book_tracker.R.menu.menu_main, menu)
-            return super.onCreateOptionsMenu(menu)
-        }
+            }
 
         fun onOptionsItemSelected(item: MenuItem?): Boolean {
             when (item?.itemId) {
@@ -67,17 +65,14 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
             return super.onOptionsItemSelected(item)
         }
 
-//        chooseImage.setOnClickListener {
-//            showImagePicker(this, IMAGE_REQUEST)
-//        }
 
          fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
             super.onActivityResult(requestCode, resultCode, data)
             when (requestCode) {
                 IMAGE_REQUEST -> {
                     if (data != null) {
-                       // book.image = data.getData().toString()
-                       // bookImage.setImageBitmap(readImage(this, resultCode, data))
+                        book.image = data.getData().toString()
+                     //   bookImage.setImageBitmap(readImage(this, resultCode, data))
                     }
             }
         }

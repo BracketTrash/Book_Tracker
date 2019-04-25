@@ -11,15 +11,14 @@ import android.content.Intent
 import android.view.*
 import models.Book_TrackerModel
 import org.jetbrains.anko.intentFor
+import com.conor.book_tracker.R
 import helpers.*
 import org.jetbrains.anko.startActivityForResult
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import android.R
-import org.jetbrains.anko.AnkoLogger
 
 
-class BookListActivity : AppCompatActivity(), AnkoLogger, BookListener{
+class BookListActivity : AppCompatActivity(), BookListener{
 
     lateinit var app:MainApp
 
@@ -34,7 +33,7 @@ class BookListActivity : AppCompatActivity(), AnkoLogger, BookListener{
         recyclerView.layoutManager = layoutManager
 
         toolbarMain.title=title
-        setSupportActionBar(toolbarMain)
+//        setSupportActionBar(toolbarMain)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
