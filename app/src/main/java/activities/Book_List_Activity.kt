@@ -1,21 +1,17 @@
 package activities
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import org.jetbrains.anko.startActivityForResult
-import kotlinx.android.synthetic.main.activity_book_list.*
-import org.jetbrains.anko.info
 import MainApp.MainApp
 import android.content.Intent
-import android.view.*
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
+import com.conor.book_tracker.R
+import kotlinx.android.synthetic.main.activity_book_list.*
 import models.Book_TrackerModel
 import org.jetbrains.anko.intentFor
-import com.conor.book_tracker.R
-import helpers.*
 import org.jetbrains.anko.startActivityForResult
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 
 
 class BookListActivity : AppCompatActivity(), BookListener{
@@ -32,7 +28,7 @@ class BookListActivity : AppCompatActivity(), BookListener{
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
-        toolbarMain.title=title
+        //toolbarMain.title=title
 //        setSupportActionBar(toolbarMain)
     }
 
