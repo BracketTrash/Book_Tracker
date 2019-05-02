@@ -38,13 +38,20 @@ class BookJSONStore : BookStore, AnkoLogger {
         serialize()
     }
 
-     fun delete(book: Book_TrackerModel) {
+    override fun delete(book: Book_TrackerModel) {
         books.remove(book)
         serialize()
     }
 
     override fun update(book: Book_TrackerModel) {
-        // todo
+        val bookList = findAll() as ArrayList<Book_TrackerModel>
+        var foundbook: Book_TrackerModel? = bookList.find { p -> p.id == book.id }
+        if (foundbook != null) {
+            foundbook.title = book.title
+            foundbook.author = book.author
+            foundbook.page = book.page
+        }
+        serialize()
     }
 
     private fun serialize() {

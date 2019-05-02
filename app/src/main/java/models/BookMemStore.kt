@@ -25,7 +25,7 @@ class BookMemStore : BookStore , AnkoLogger{
         logAll()
     }
 
-    fun delete(book: Book_TrackerModel) {
+    override fun delete(book: Book_TrackerModel) {
         books.remove(book)
     }
 

@@ -15,6 +15,8 @@ import kotlinx.android.synthetic.main.activity_book_list.*
 import models.Book_TrackerModel
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
+import android.view.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class BookListActivity : AppCompatActivity(), BookListener{
@@ -23,18 +25,22 @@ class BookListActivity : AppCompatActivity(), BookListener{
 
     override fun onCreate(savedInstanceState:Bundle?){
         super.onCreate(savedInstanceState)
-        setContentView(com.conor.book_tracker.R.layout.activity_book_list)
+        setContentView(R.layout.activity_book_list)
         app=application as MainApp
 
 
-//        recyclerView.adapter = BookAdapter(app.books.findAll(), this)
+        recyclerView.adapter = BookAdapter(app.books.findAll(), this)
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         loadBooks()
+
+//     toolbarAdd.title = title
+//       setSupportActionBar(toolbarAdd)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(com.conor.book_tracker.R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
