@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Book_Tracker</string>
+    <string name="button_addBook">Add Book</string>
+    <string name="hint_bookTitle">Book Title</string>
+    <string name="hint_bookAuthor">Book Author</string>
+    <string name="hint_bookPage">Book Page</string>
+    <string name="menu_addBook">Add</string>
+    <string name="enter_book_title"> Please enter a book Title </string>
+    <string name="save_book"> Save Book </string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_book_image">Select book image</string>
+    <string name="menu_deleteBook">Delete</string>
+    <string name="menu_cancelBook">Cancel</string>
+</resources>
